@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# 🔥 Super Cool Bro Proj
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Super Cool Bro Proj** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a touch of 🔥. This project showcases full-stack skill, clean UI/UX, and interactive gameplay powered by dynamic data and React context.
 
-## Available Scripts
+## 🎯 Features
 
-In the project directory, you can run:
+- 🎮 **Jeopardy-Style Grid** – Cleanly styled 4x5 question board using `styled-components`.
+- 🧠 **Trivia Engine** – Supports dynamic topic/question loading using a cloud-based Parse backend.
+- ✅ **Live Scoring** – Track your score in real time with automatic correctness checks.
+- ⏱️ **Answer Feedback** – Highlights correct and incorrect answers with color-coded buttons and animations.
+- 🔁 **Restartable Game Loop** – Full reducer-based state management (like Redux-lite) with `useReducer`.
+- 🌐 **Route-Based Flow** – Powered by React Router for smooth transitions between game states.
+- 🗃️ **Module-Level Caching** – Prevents unnecessary reloads and boosts dev performance.
 
-### `npm start`
+## ⚙️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Frontend        | Backend           | Tools & Libraries           |
+|-----------------|-------------------|-----------------------------|
+| React (Vite)    | Parse Server (Cloud) | React Router, styled-components |
+| useReducer      | Parse Object Queries | Context API                |
+| React Router v6 |                   |                             |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📸 Screenshots
 
-### `npm test`
+| Gameplay                | Scoreboard              | Finish Screen            |
+|-------------------------|--------------------------|---------------------------|
+| ![gameplay](./assets/game.png) | ![score](./assets/score.png) | ![finish](./assets/finish.png) |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> _Note: Replace with your actual screenshots for max fire_ 🔥
 
-### `npm run build`
+## 🧠 Why It Matters
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project demonstrates:
+- 🔄 **State machine logic** via `useReducer`
+- ⚡️ **Optimized data fetching** using module-scoped caching
+- 🧩 **Component composition** for scalable UI
+- 🧼 **Clean styling** with full control using `styled-components`
+- 🚀 **Real-world deployability** with GitHub + Parse + Vite
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/thomaswynnem/super_cool_bro_proj.git
+cd super_cool_bro_proj
+npm install
+npm run dev

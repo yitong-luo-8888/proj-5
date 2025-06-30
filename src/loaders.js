@@ -1,7 +1,14 @@
 import Parse from './parseConfig';
 
+let quizCache = null;
 
 export async function optionLoader() {
+
+  if (quizCache) {
+    console.log("Using cached quiz data");
+    return quizCache;
+  }
+
   const ORDER = ['television_shows', 'television_movies', 'sports_football', 'sports_soccer'];
 
   const Quiz = Parse.Object.extend('Quizzes');
@@ -24,7 +31,10 @@ export async function optionLoader() {
       topic: quiz.get('topic'),
       questionNumber: quiz.get('questionNumber'),
     };
-  });
+  });if (quizCache) {
+    console.log("Using cached quiz data");
+    return quizCache;
+  }
 
   const sportsQuery = new Parse.Query('Sports_Questions');
   sportsQuery.include('topic_area');
@@ -108,6 +118,7 @@ for (let row = 0; row < 5; row++) {
 
 console.log(columnFirstOrdered);
 
+quizCache = columnFirstOrdered;
 return columnFirstOrdered;
 
   

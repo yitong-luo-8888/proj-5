@@ -1,46 +1,60 @@
-# 🔥 Jeopardy - Spinoff
+# 🔥 Super Cool Bro Proj
 
-Welcome to **the Jeopardy Spinoff** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a touch of 🔥. This project showcases full-stack skill, clean UI/UX, and interactive gameplay powered by dynamic data and React context.
+Welcome to **Super Cool Bro Proj** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
 
-## 🎯 Features
+## 🎯 Highlights
 
-- 🎮 **Jeopardy-Style Grid** – Cleanly styled 4x5 question board using `styled-components`.
-- 🧠 **Trivia Engine** – Supports dynamic topic/question loading using a cloud-based Parse backend.
-- ✅ **Live Scoring** – Track your score in real time with automatic correctness checks.
-- ⏱️ **Answer Feedback** – Highlights correct and incorrect answers with color-coded buttons and animations.
-- 🔁 **Restartable Game Loop** – Full reducer-based state management (like Redux-lite) with `useReducer`.
-- 🌐 **Route-Based Flow** – Powered by React Router for smooth transitions between game states.
-- 🗃️ **Module-Level Caching** – Prevents unnecessary reloads and boosts dev performance.
+- 🎮 **Jeopardy-Style Grid** – Interactive 4x5 board with category headers and click-to-play tiles.
+- 🧠 **Context + Reducer State Engine** – Redux-style logic using `useReducer`, built from scratch.
+- ✅ **Live Scoring System** – Tracks points in real-time based on correct answers and question values.
+- ⏱️ **Answer Feedback** – Buttons flash green/red depending on correctness before continuing.
+- 🔁 **Full Game Flow** – From start → play → finish, with a restart button at the end.
+- ⚡ **Module-Level Data Caching** – Prevents unnecessary re-fetching of quiz data.
 
-## ⚙️ Tech Stack
+## ⚙️ Built With
 
-| Frontend        | Backend           | Tools & Libraries           |
-|-----------------|-------------------|-----------------------------|
-| React (Vite)    | Parse Server (Cloud) | React Router, styled-components |
-| useReducer      | Parse Object Queries | Context API                |
-| React Router v6 |                   |                             |
+| Tech               | Purpose                                      |
+|--------------------|----------------------------------------------|
+| React (CRA)        | UI framework                                 |
+| React Router v6    | Routing between game states                  |
+| Styled-Components  | Styling with scoped, dynamic styles          |
+| useReducer + Context | Global state management without Redux      |
+| Parse (Back4App)   | Cloud backend for quizzes and questions      |
 
-## 📸 Screenshots
+## 🖼️ Game Flow
 
-| Gameplay                | Scoreboard              | Finish Screen            |
-|-------------------------|--------------------------|---------------------------|
-| ![gameplay](./assets/game.png) | ![score](./assets/score.png) | ![finish](./assets/finish.png) |
+1. 🧭 **Home/Start Screen** (optional)
+2. 📋 **Jeopardy Board** (play area)
+3. ❓ **Question View** (with answer buttons)
+4. 🏁 **Finished Screen** (score + restart)
 
-> _Note: Replace with your actual screenshots for max fire_ 🔥
+> Everything flows smoothly with React Router transitions and state-driven rendering.
 
-## 🧠 Why It Matters
+## 💡 What This Project Demonstrates
 
-This project demonstrates:
-- 🔄 **State machine logic** via `useReducer`
-- ⚡️ **Optimized data fetching** using module-scoped caching
-- 🧩 **Component composition** for scalable UI
-- 🧼 **Clean styling** with full control using `styled-components`
-- 🚀 **Real-world deployability** with GitHub + Parse + Vite
+- ⚙️ Manual state machine construction with `useReducer`
+- 📦 Cached async loading with module-level memoization
+- 🧱 Component-based UI composition
+- 💅 Clean, scalable styling using `styled-components`
+- 🔍 Recruiter-friendly code structure and real-world UI logic
 
-## 🚀 Getting Started
+## 🔒 Note for Reviewers
 
-```bash
-git clone https://github.com/thomaswynnem/super_cool_bro_proj.git
-cd super_cool_bro_proj
-npm install
-npm run dev
+This project is not open for public cloning. If you'd like to see the code or demo it:
+
+📩 Reach out directly:  
+**Email** – thomaswynnem [at] gmail [dot] com  
+**GitHub** – [@thomaswynnem](https://github.com/thomaswynnem)
+
+---
+
+## 📫 Contact
+
+Thanks for checking this out!  
+I love building projects with clear purpose, modern UX, and code that can scale.
+
+If you're looking for a front-end or full-stack engineer with strong problem-solving, creative energy, and real-world product instincts — I'm your guy. 👊
+
+---
+
+> Built with React. Fueled by curiosity. Deployed with confidence.

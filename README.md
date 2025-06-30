@@ -1,6 +1,5 @@
-# 🔥 Super Cool Bro Proj
-
-Welcome to **Super Cool Bro Proj** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
+# 🔥 Jeopardy Spinoff
+Welcome to **Jeopardy Spinoff** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
 
 ## 🎯 Highlights
 

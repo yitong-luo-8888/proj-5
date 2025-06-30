@@ -38,22 +38,12 @@ Welcome to **Super Cool Bro Proj** – a Jeopardy-style trivia game built with *
 - 💅 Clean, scalable styling using `styled-components`
 - 🔍 Recruiter-friendly code structure and real-world UI logic
 
-## 🔒 Note for Reviewers
-
-This project is not open for public cloning. If you'd like to see the code or demo it:
 
 📩 Reach out directly:  
 **Email** – thomaswynnem [at] gmail [dot] com  
 **GitHub** – [@thomaswynnem](https://github.com/thomaswynnem)
 
 ---
-
-## 📫 Contact
-
-Thanks for checking this out!  
-I love building projects with clear purpose, modern UX, and code that can scale.
-
-If you're looking for a front-end or full-stack engineer with strong problem-solving, creative energy, and real-world product instincts — I'm your guy. 👊
 
 ---
 

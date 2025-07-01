@@ -1,49 +1,57 @@
-# 🔥 *Mini Jeopardy*
-Welcome to **Jeopardy Spinoff** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
+# Mini Jeopardy
 
-## 🎯 Highlights
+**Mini Jeopardy** is a trivia game inspired by *Jeopardy*, built with **React**, **Parse**, and a custom global state engine using `useReducer`. It’s a fully interactive quiz app that emphasizes clean component design, modular architecture, and a smooth user experience.
 
-- 🎮 **Jeopardy-Style Grid** – Interactive 4x5 board with category headers and click-to-play tiles.
-- 🧠 **Context + Reducer State Engine** – Redux-style logic using `useReducer`, built from scratch.
-- ✅ **Live Scoring System** – Tracks points in real-time based on correct answers and question values.
-- ⏱️ **Answer Feedback** – Buttons flash green/red depending on correctness before continuing.
-- 🔁 **Full Game Flow** – From start → play → finish, with a restart button at the end.
-- ⚡ **Module-Level Data Caching** – Prevents unnecessary re-fetching of quiz data.
+Built in collaboration with **Yitong**, this project involved shared development across frontend components, backend integration via Back4App (Parse), and state management architecture.
 
-## ⚙️ Built With
+---
 
-| Tech               | Purpose                                      |
+## Key Features
+
+- Interactive **4x5 game board** with category headers and clickable question tiles  
+- **Answer feedback** system showing correctness with temporary color changes  
+- **Real-time scoring** based on question point values  
+- Full game loop: **start → play → finish → restart**  
+- **Data caching** to minimize redundant API requests and improve load times  
+
+---
+
+## Tech Stack
+
+| Technology         | Role                                         |
 |--------------------|----------------------------------------------|
-| React (CRA)        | UI framework                                 |
-| React Router v6    | Routing between game states                  |
-| Styled-Components  | Styling with scoped, dynamic styles          |
-| useReducer + Context | Global state management without Redux      |
-| Parse (Back4App)   | Cloud backend for quizzes and questions      |
-
-## 🖼️ Game Flow
-
-1. 🧭 **Home/Start Screen** (optional)
-2. 📋 **Jeopardy Board** (play area)
-3. ❓ **Question View** (with answer buttons)
-4. 🏁 **Finished Screen** (score + restart)
-
-> Everything flows smoothly with React Router transitions and state-driven rendering.
-
-## 💡 What This Project Demonstrates
-
-- ⚙️ Manual state machine construction with `useReducer`
-- 📦 Cached async loading with module-level memoization
-- 🧱 Component-based UI composition
-- 💅 Clean, scalable styling using `styled-components`
-- 🔍 Recruiter-friendly code structure and real-world UI logic
-
-
-📩 Reach out directly:  
-**Email** – thomaswynnem [at] gmail [dot] com  
-**GitHub** – [@thomaswynnem](https://github.com/thomaswynnem)
+| React (CRA)        | Frontend UI and routing                      |
+| React Router v6    | Page and state-based transitions             |
+| Styled-components  | Modular, scoped component styling            |
+| useReducer + Context | Global game state management               |
+| Parse (Back4App)   | Cloud database for questions and metadata    |
 
 ---
 
+## Game Flow
+
+1. Start Screen  
+2. Game Board  
+3. Question View  
+4. Finished Screen (with score and restart option)
+
+State transitions are managed via `useReducer` and synced with React Router views.
+
 ---
 
-> Built with React. Fueled by curiosity. Deployed with confidence.
+## Development Highlights
+
+- Designed a **custom reducer-based state engine** to manage question state, scoring, and navigation  
+- Integrated **Back4App (Parse)** to load questions and quiz metadata dynamically  
+- Organized all Parse queries in isolated model files for clean separation of concerns  
+- Implemented efficient **data caching** at the module level to reduce backend load  
+- Collaborated across architecture, styling, and gameplay logic with clear division of responsibilities
+
+---
+
+## Contact
+
+**Thomas Mitchell**  
+GitHub – [@thomaswynnem](https://github.com/thomaswynnem)
+
+> A clean React architecture project with practical UI logic and backend integration — designed for clarity, simplicity, and reuse.

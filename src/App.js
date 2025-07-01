@@ -3,7 +3,7 @@ import Home from "./pages/Home"
 import Error from "./pages/Error"
 import Play from "./pages/Play"
 import Finished from "./pages/Finished"
-import { optionLoader } from "./loaders"
+import { optionLoader } from "./data/loaders"
 import { QuizProvider } from "./contexts/gameContext"; 
 import GlobalStyle from "./GlobalStyle"
 import QuestionWrapper from "./QuestionWrapper"

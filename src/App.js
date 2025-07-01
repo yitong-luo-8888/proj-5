@@ -23,10 +23,6 @@ const router = createBrowserRouter([
     loader: optionLoader,
   },
   {
-    path: '/question',
-    element: <QuestionWrapper />
-  },
-  {
     path: 'finished',
     element: <Finished />,
   }

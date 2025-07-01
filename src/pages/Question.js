@@ -3,16 +3,23 @@ import styled from "styled-components";
 import { QuestionBox } from "../styles";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import GameCard from "../components/GameCard";
 
-const Wrapper = styled.div`
-  background-color: black;
-  min-height: 100vh;
+
+const OverlayWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  gap: 2rem;
+  gap: 1.5rem;
 `;
 
 const AnswerButton = styled.button`
@@ -40,7 +47,6 @@ const AnswerButton = styled.button`
 function QuestionScreen() {
   const { questions, current, newAnswer} = useQuiz();
   const question = questions[current];
-  const navigate = useNavigate();
 
   const [clicked, setClicked] = useState(null);
   const [statusMap, setStatusMap] = useState({});
@@ -51,7 +57,6 @@ function QuestionScreen() {
     if (clicked) return; // prevent double-clicks
 
     setClicked(answerText);
-    newAnswer(answerText);
 
     const isCorrect = question.rawAnswers[answerText] === true;
     setStatusMap({
@@ -59,26 +64,13 @@ function QuestionScreen() {
     });
 
     setTimeout(() => {
-      navigate("/gamezone");
+      newAnswer(answerText);
     }, 1000);
   }
 
   return (
-    <Wrapper>
-      <QuestionBox
-        as="div"
-        style={{
-          width: "60%",
-          height: "auto",
-          padding: "2rem",
-          fontSize: "1.5rem",
-          lineHeight: "1.8rem",
-          textAlign: "center"
-        }}
-      >
-        {question.question}
-      </QuestionBox>
-
+    <OverlayWrapper>
+      <GameCard question={question} type="Answer" />
       {Object.keys(question.rawAnswers || {}).map((answerText) => (
         <AnswerButton
           key={answerText}
@@ -89,7 +81,7 @@ function QuestionScreen() {
           {answerText}
         </AnswerButton>
       ))}
-    </Wrapper>
+    </OverlayWrapper>
   );
 }
 

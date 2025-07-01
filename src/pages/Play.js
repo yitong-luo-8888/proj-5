@@ -9,6 +9,9 @@ import {
 import { useEffect } from "react";
 import { useQuiz } from "../contexts/gameContext";
 import styled from "styled-components";
+import SubjectsHeader from "../components/SubjectsHeader";
+import JeopardyForm from "../components/JeopardyForm";
+import QuestionScreen from "./Question";
 
 
 const ScoreBox = styled.div`
@@ -24,7 +27,7 @@ function Play() {
   const data = useLoaderData();
   const navigate = useNavigate();
 
-  const { dataReceived, status, nextQuestion, answered, points } = useQuiz();
+  const { dataReceived, status, nextQuestion, answered, points, current } = useQuiz();
 
   useEffect(() => {
     if (data) {
@@ -38,42 +41,23 @@ function Play() {
     }
   }, [answered, data, navigate])
 
-  function onClick(index) {
-    nextQuestion(index);
-    navigate("/question");
-  }
-
   return (
     <div style={{ backgroundColor: "black", minHeight: "100vh" }}>
       <JeopardyTitle>Open Book Jeopardy</JeopardyTitle>
 
       <ScoreBox>Score: {points}</ScoreBox>
 
-      {status === "loading" && <p style={{ color: "white" }}>Data loading</p>}
-      {status === "error" && <p style={{ color: "white" }}>Error</p>}
-
+      {status === "loading" && <p style={{ color: "white" }}>Data loading...</p>}
+      {status === "error" && <p style={{ color: "white" }}>Error!</p>}
       {status === "ready" && (
         <div>
-          <TopicHeaderRow>
-            <TopicHeader>TV Show</TopicHeader>
-            <TopicHeader>Movie</TopicHeader>
-            <TopicHeader>Football</TopicHeader>
-            <TopicHeader>Soccer</TopicHeader>
-          </TopicHeaderRow>
-
-          <TotalBox>
-            {data.map((question, i) => (
-              <QuestionBox
-                onClick={() => onClick(i)}
-                key={i}
-                disabled={answered.includes(question.index)}
-              >
-                {question.question}
-              </QuestionBox>
-            ))}
-          </TotalBox>
+          <SubjectsHeader />
+          <JeopardyForm />
         </div>
       )}
+      {status ==="ready" && current!==null && <QuestionScreen />}
+
+
     </div>
   );
 }

@@ -101,3 +101,26 @@ export const ColumnWrapper = styled.div`
   align-items: center;
   gap: 1rem;
 `;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #001f4d;
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 11;
+  box-shadow: 0 0 10px #ffd700;
+`;

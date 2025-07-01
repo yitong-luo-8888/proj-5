@@ -5,7 +5,7 @@ const QuizContext = createContext();
 const initialState = {
     questions: [],
     status: "loading",
-    current: 0,
+    current: null,
     answers: null,
     points: 0,
     answered: []
@@ -33,13 +33,13 @@ function reducer(state, action) {
 
             console.log("Is Correct:", isCorrect);
             console.log("question is worth ", question.points)
-            return {...state, answer: action.payload, points:  isCorrect ? state.points + question.points : state.points, answered: [...state.answered, question.index]}
+            return {...state, answer: action.payload, current: null, points:  isCorrect ? state.points + question.points : state.points, answered: [...state.answered, question.index]}
         case 'nextQuestion':
             return {...state, current: action.payload, answer: null}
         case 'finish':
             return {...state, status: 'finished'}
         case 'restart':
-            return {...state, current: 0, points: 0, answer: null, status:'active', answered: []}
+            return {...state, current: null, points: 0, answer: null, status:'active', answered: []}
         default:
             throw new Error("action unkown");
     }

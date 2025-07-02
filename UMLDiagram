@@ -1,0 +1,18 @@
+                    +--------------------+
+                    |      Quizzes       |
+                    +--------------------+
+                    | - topic: String    |
+                    | - questionNumber: Int |
+                    +--------------------+
+                           ▲
+              ┌────────────┴────────────┐
+              │                         │
++----------------------------+  +---------------------------+
+|  Television_Questions      |  |   Sports_Questions        |
++----------------------------+  +---------------------------+
+| - question: String         |  | - question: String        |
+| - difficulty: String       |  | - difficulty: String      |
+| - answers: Array           |  | - answers: Array          |
+| - points: Int (optional)   |  | - points: Int (optional)  |
+| - topic_area: Quizzes (rel)|  | - topic_area: Quizzes (rel)|
++----------------------------+  +---------------------------+

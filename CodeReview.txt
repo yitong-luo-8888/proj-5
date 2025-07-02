@@ -1,0 +1,19 @@
+Student A: Component Architecture & UI Interaction
+
+Multiple Controllers/Components: Uses Play.jsx, QuestionWrapper.jsx, Finished.jsx, Home.jsx → Good modular design.
+
+Form of Interaction: The game uses <QuestionBox> buttons that allow user interaction — satisfies the “more than 2 UI elements” requirement.
+
+Feature-based folder structure: Components, pages, loaders, models, and styles are well organized.
+
+Topic headers were misaligned
+
+Student B: Data Services & Backend Logic
+
+All Parse queries moved to model files like QuizModel.js, SportsQuestionModel.js, TelevisionQuestionModel.js
+
+Custom services used correctly – no Parse logic inside components or loaders
+
+Correct use of caching in optionLoader() to avoid redundant network calls
+
+Asynchronous data handled properly – uses useLoaderData, useEffect, and fallback states (loading, error)

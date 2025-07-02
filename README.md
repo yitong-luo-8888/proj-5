@@ -1,49 +1,63 @@
-# 🔥 Jeopardy  - 3 Hour Production Time
-Welcome to **Jeopardy Spinoff** – a Jeopardy-style trivia game built with **React**, **styled-components**, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
+Jeopardy – 3 Hour Production Time
 
-## 🎯 Highlights
+Welcome to Jeopardy Spinoff – a Jeopardy-style trivia game built with React, styled-components, and a reducer-powered state engine. This is a fully interactive, dynamic quiz experience that showcases clean architecture and thoughtful UX.
 
-- 🎮 **Jeopardy-Style Grid** – Interactive 4x5 board with category headers and click-to-play tiles.
-- 🧠 **Context + Reducer State Engine** – Redux-style logic using `useReducer`, built from scratch.
-- ✅ **Live Scoring System** – Tracks points in real-time based on correct answers and question values.
-- ⏱️ **Answer Feedback** – Buttons flash green/red depending on correctness before continuing.
-- 🔁 **Full Game Flow** – From start → play → finish, with a restart button at the end.
-- ⚡ **Module-Level Data Caching** – Prevents unnecessary re-fetching of quiz data.
+Highlights:
 
-## ⚙️ Built With
+Jeopardy-Style Grid – Interactive 4x5 board with category headers and click-to-play tiles.
 
-| Tech               | Purpose                                      |
-|--------------------|----------------------------------------------|
-| React (CRA)        | UI framework                                 |
-| React Router v6    | Routing between game states                  |
-| Styled-Components  | Styling with scoped, dynamic styles          |
-| useReducer + Context | Global state management without Redux      |
-| Parse (Back4App)   | Cloud backend for quizzes and questions      |
+Context + Reducer State Engine – Redux-style logic using useReducer, built from scratch.
 
-## 🖼️ Game Flow
+Live Scoring System – Tracks points in real-time based on correct answers and question values.
 
-1. 🧭 **Home/Start Screen** (optional)
-2. 📋 **Jeopardy Board** (play area)
-3. ❓ **Question View** (with answer buttons)
-4. 🏁 **Finished Screen** (score + restart)
+Answer Feedback – Buttons flash green/red depending on correctness before continuing.
 
-> Everything flows smoothly with React Router transitions and state-driven rendering.
+Full Game Flow – From start → play → finish, with a restart button at the end.
 
-## 💡 What This Project Demonstrates
+Module-Level Data Caching – Prevents unnecessary re-fetching of quiz data.
 
-- ⚙️ Manual state machine construction with `useReducer`
-- 📦 Cached async loading with module-level memoization
-- 🧱 Component-based UI composition
-- 💅 Clean, scalable styling using `styled-components`
-- 🔍 Recruiter-friendly code structure and real-world UI logic
+Built With:
 
+React (CRA): UI framework
 
-📩 Reach out directly:  
-**Email** – thomaswynnem [at] gmail [dot] com  
-**GitHub** – [@thomaswynnem](https://github.com/thomaswynnem)
+React Router v6: Routing between game states
 
----
+Styled-Components: Styling with scoped, dynamic styles
 
----
+useReducer + Context: Global state management without Redux
 
-> Built with React. Fueled by curiosity. Deployed with confidence.
+Parse (Back4App): Cloud backend for quizzes and questions
+
+Game Flow:
+
+Home/Start Screen (optional)
+
+Jeopardy Board (play area)
+
+Question View (with answer buttons)
+
+Finished Screen (score + restart)
+
+Everything flows smoothly with React Router transitions and state-driven rendering.
+
+What This Project Demonstrates:
+
+Manual state machine construction with useReducer
+
+Cached async loading with module-level memoization
+
+Component-based UI composition
+
+Clean, scalable styling using styled-components
+
+Recruiter-friendly code structure and real-world UI logic
+
+Contributors:
+Yitong Luo 
+Thomas Wynne
+
+Contact:
+
+Email – yluo9 [at] nd [dot] edu
+Email – thomaswynnem [at] gmail [dot] com
+GitHub – https://github.com/thomaswynnem

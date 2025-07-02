@@ -1,0 +1,9 @@
+<App>
+├── <Router>
+│   ├── <HomePage />
+│   ├── <GamePage>
+│   │   ├── <GameBoard>
+│   │   │   ├── <Tile />          ← 20 total tiles, one per question
+│   │   └── <Scoreboard />        ← displays current score
+│   ├── <QuestionModal />         ← popup when a tile is clicked
+│   └── <ResultsPage />           ← shows after game completion

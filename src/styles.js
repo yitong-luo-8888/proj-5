@@ -7,11 +7,9 @@ export const TotalBox = styled.div`
   grid-template-rows: repeat(5, 1fr);
   gap: 0.75rem;
   width: 50%;
-  height: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: auto;
+  margin-top: 8rem; /* push grid lower under the score */
+  margin-bottom: 4rem;
 `;
 
 export const QuestionBox = styled.button`
@@ -79,7 +77,7 @@ export const TopicHeaderRow = styled.div`
   gap: 0.75rem;
   width: 50%;
   margin: 1rem auto 0;
-  margin-bottom: 2rem; 
+  margin-bottom: 4rem; 
 `;
 
 export const TopicHeader = styled.div`
@@ -94,10 +92,21 @@ export const TopicHeader = styled.div`
   text-align: center;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 `;
-
 export const ColumnWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;   /* ✅ centers the whole board */
   gap: 1rem;
+  padding: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  width: 100%;               /* ✅ ensure it spans the container */
+  box-sizing: border-box;    /* avoid overflow issues */
+`;
+
+
+export const SingleColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;    /* 🔁 instead of center */
+  gap: 0.75rem;
 `;

@@ -1,3 +1,5 @@
+// errorController.js
+// Centralized error-handling middleware for consistent API error responses
 import AppError from './../utils/appError.js';
 
 const handleMissingQuizData = (err) => {

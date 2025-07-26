@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../contexts/newAuthContext";
 import { useNavigate } from "react-router-dom";
-
+//  Leaderboard or individual user scores view.
 const Page = styled.div`
   max-width: 800px;
   margin: 40px auto;

@@ -1,3 +1,4 @@
+// Shown after quiz completion, displays score or feedback.
 import { useNavigate } from "react-router";
 import { useQuiz } from "../contexts/gameContext";
 import styled from "styled-components";

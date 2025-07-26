@@ -1,3 +1,5 @@
+// Models/Auth.js
+// Mongoose model for storing user authentication data (email, hashed password, timestamps)
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 

@@ -1,3 +1,11 @@
+// staticGameController.js
+/*
+  Handles AI-based quiz generation using OpenAI's GPT API.
+  - Accepts prompts
+  - Constructs API calls
+  - Formats and returns structured quiz question objects
+*/
+
 import Quiz from './../Models/Quiz.js';
 import OpenAI from 'openai';
 import dotenv from 'dotenv'

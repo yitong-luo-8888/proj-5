@@ -1,4 +1,10 @@
-// models/Quiz.js
+// Models/Quiz.js
+/*
+  Mongoose model for storing quiz games
+  - Includes metadata (title, topic)
+  - Questions with options, correct index
+  - Can be used for both static and AI-generated quizzes
+*/
 import mongoose from 'mongoose';
 
 const AnswerSchema = new mongoose.Schema({

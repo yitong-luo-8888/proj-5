@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import LoginSignUpFeature from "./../components/NavBar";
 import { useAuth } from "../contexts/newAuthContext";
-
+// Home or landing page with an intro or overview.
 
 const Corner = styled.div`
   position: fixed;

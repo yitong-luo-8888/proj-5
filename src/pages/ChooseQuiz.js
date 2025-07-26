@@ -1,3 +1,4 @@
+// Page for selecting from a list of available quizzes.
 import { useLoaderData, NavLink } from "react-router-dom";
 import styled from "styled-components";
 

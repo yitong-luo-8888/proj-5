@@ -1,5 +1,6 @@
 import User from './../Models/Auth.js';
-
+// userScoreController.js
+// Manages score saving, retrieval, and leaderboard endpoints
 export const postScores = async (req, res) => {
   const { username } = req.params;
   const { quizTitle, score, outOf } = req.body;

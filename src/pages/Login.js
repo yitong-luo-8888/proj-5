@@ -1,4 +1,5 @@
 // src/pages/Login.jsx
+// User login form/page
 import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/newAuthContext";

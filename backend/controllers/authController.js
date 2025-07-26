@@ -1,3 +1,5 @@
+// authController.js
+// Handles user authentication: signup, login, and JWT token issuing/verification
 import jwt from 'jsonwebtoken';
 import User from './../Models/Auth.js';
 

@@ -100,7 +100,7 @@ export default function CreateQuiz() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ prompt: aiPrompt + ". Include 6 categories" })
+        body: JSON.stringify({ prompt: "6 category " + aiPrompt })
     });
       const data = await res.json();
       setThink(false);

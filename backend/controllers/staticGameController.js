@@ -1,8 +1,8 @@
 import Quiz from './../Models/Quiz.js';
 import OpenAI from 'openai';
+import dotenv from 'dotenv'
+dotenv.config()
 
-import dotenv from './../dotenv';
-dotenv.config();
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -83,7 +83,7 @@ export const gptWriteQuiz = async (req, res) => {
               - Each question has exactly 4 answers
               - Exactly ONE answer must have correct=true
 
-              You MUST obey these rules without exception. Do not explain. Just return valid JSON of 6 category jeopardy
+              You MUST obey these rules without exception. Do not explain. Just return valid json with 6 categories
               `
         },
         { role: "user", content: prompt }

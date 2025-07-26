@@ -1,3 +1,5 @@
+Project Video: 
+https://youtu.be/7VlBXrs4UzA
 🎮 Mini Jeopardy
 Mini Jeopardy is a trivia game inspired by Jeopardy! — built with React, Parse, and a custom global state engine using useReducer. It’s a fully interactive quiz app that emphasizes clean component design, modular architecture, and a smooth user experience.
 

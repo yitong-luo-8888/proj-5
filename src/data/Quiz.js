@@ -1,14 +1,14 @@
 // models/Quiz.js
-import Parse from './parseConfig';
 
-const Quiz = Parse.Object.extend('Quizzes');
-
+// (No more Parse imports)
+// models/Quiz.js
 export async function getAllQuizzes() {
-  const query = new Parse.Query(Quiz);
   try {
-    return await query.find();
+    const res = await fetch('http://localhost:3001/quizzes'); // ← include http://localhost
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
   } catch (err) {
-    console.error('Failed to fetch Quizzes:', err);
+    console.error('Failed to fetch quizzes:', err);
     return [];
   }
 }

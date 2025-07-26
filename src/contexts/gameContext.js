@@ -1,89 +1,130 @@
-import { createContext, useContext, useReducer } from "react";
+// gameContext.js
+import React, { createContext, useContext, useReducer, useCallback, useMemo } from "react";
 
 const QuizContext = createContext();
 
 const initialState = {
-    questions: [],
-    status: "loading",
-    current: null,
-    answers: null,
-    points: 0,
-    answered: []
-}
+  questions: [],
+  status: "loading",
+  current: null,
+  answer: null,
+  points: 0,
+  answered: []
+};
 
 function reducer(state, action) {
-    switch(action.type) {
-        case 'dataReceived':
-            return {...state, questions: action.payload, status: "ready"}
-        case 'dataFailed':
-            return {...state, status:'error'}
-        case 'newAnswer':
-            const question = state.questions.at(state.current);
-            const selected = action.payload.trim().toLowerCase();
+  switch (action.type) {
+    case "dataReceived":
+      return { ...state, questions: action.payload, status: "ready" };
 
-            console.log("User selected:", selected);
-            console.log("rawAnswers:", question.rawAnswers);
+    case "dataFailed":
+      return { ...state, status: "error" };
 
-            const correctKey = Object.entries(question.rawAnswers).find(
-                ([key, value]) =>
-                key.trim().toLowerCase() === selected && value === true
-            );
+    case "closeQuestion":
+  return { ...state, current: null };
 
-            const isCorrect = !!correctKey;
+    case "nextQuestion":
+      return { ...state, current: action.payload, answer: null };
 
-            console.log("Is Correct:", isCorrect);
-            console.log("question is worth ", question.points)
-            return {...state, answer: action.payload, current: null, points:  isCorrect ? state.points + question.points : state.points, answered: [...state.answered, question.index]}
-        case 'nextQuestion':
-            return {...state, current: action.payload, answer: null}
-        case 'finish':
-            return {...state, status: 'finished'}
-        case 'restart':
-            return {...state, current: null, points: 0, answer: null, status:'active', answered: []}
-        default:
-            throw new Error("action unkown");
+        case "newAnswer": {
+      const question = state.questions[state.current];
+      const selectedText = action.payload.trim().toLowerCase();
+
+      const ansObj = question.answers.find(
+        ({ text }) => text.trim().toLowerCase() === selectedText
+      );
+      const isCorrect = !!ansObj?.correct;
+
+      return {
+        ...state,
+        answer: action.payload,
+        points: isCorrect ? state.points + question.points : state.points,
+        answered: [...state.answered, question.id]
+      };
     }
+
+    case "finish":
+      return { ...state, status: "finished" };
+
+    case "restart":
+      return {
+        ...initialState,
+        status: "ready" // or "active" depending on your flow
+      };
+
+    default:
+      throw new Error("Unknown action: " + action.type);
+  }
 }
 
-function QuizProvider({children}) {
+function QuizProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { questions, status, current, answer, points, answered } = state;
 
-  const [{questions, status, current, answer, points, answered}, dispatch] = useReducer(reducer, initialState)
-    //const maxPoints = questions.reduce((prev,curr)=> prev+curr.points,0);
-    //const numQuestions = questions.length;
+  const closeQuestion = useCallback(() => dispatch({ type: "closeQuestion" }), []);
 
-    function dataReceived(data) {
-        dispatch({type:"dataReceived", payload: data})
-    }
-    function start() {
-        dispatch({type:"start"});
-    }
+  // Wrap dispatchers in callbacks
+  const dataReceived = useCallback(
+  (data) => dispatch({ type: "dataReceived", payload: data }),
+  []
+);
 
-    function nextQuestion(index) {
-        console.log(index)
-        dispatch({type:"nextQuestion", payload: index})
-    }
+const nextQuestion = useCallback(
+  (id) => {
+    const idx = state.questions.findIndex(q => q.id === id);
+    console.log("Looking for ID:", id, "→ index:", idx); // 👀 Debug log
+    if (idx !== -1) dispatch({ type: "nextQuestion", payload: idx });
+  },
+  [state.questions]
+);
 
-    function finish() {
-        dispatch({type:"finish"})
-    }
+const newAnswer = useCallback(
+  (answerText) => dispatch({ type: "newAnswer", payload: answerText }),
+  []
+);
 
-    function restart () {
-        dispatch({type: 'restart'})
-    }
+  const finish = useCallback(() => dispatch({ type: "finish" }), []);
+  const restart = useCallback(() => dispatch({ type: "restart" }), []);
 
-    function newAnswer(answerindex) {
-        dispatch({type: 'newAnswer', payload: answerindex});
-    }
+  // Memoize context value so it only changes when one of its members changes
+  const value = useMemo(
+    () => ({
+      questions,
+      status,
+      current,
+      answer,
+      points,
+      answered,
+      dataReceived,
+      nextQuestion,
+      newAnswer,
+      finish,
+      restart,
+      closeQuestion
+    }),
+    [
+      questions,
+      status,
+      current,
+      answer,
+      points,
+      answered,
+      dataReceived,
+      nextQuestion,
+      newAnswer,
+      finish,
+      restart,
+      closeQuestion
+    ]
+  );
 
-  return <QuizContext.Provider value={{dataReceived, newAnswer, restart, nextQuestion, finish, start, questions, answered, status, current, answer, points}}>
-    {children}
-  </QuizContext.Provider>
+  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
 }
 
 function useQuiz() {
-    const x = useContext(QuizContext);
-    if(x===undefined) throw new Error("Quiz context useed outside provider");
-    return x;
+  const ctx = useContext(QuizContext);
+  if (!ctx) throw new Error("useQuiz must be used inside QuizProvider");
+  return ctx;
 }
 
-export {QuizProvider, useQuiz}
+export { QuizProvider, useQuiz };

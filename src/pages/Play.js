@@ -1,65 +1,77 @@
-import { Outlet, useLoaderData, useNavigate } from "react-router";
-import {
-  JeopardyTitle,
-  TopicHeader,
-  TopicHeaderRow,
-  TotalBox,
-  QuestionBox
-} from "../styles";
+// pages/Play.jsx
+import { useLoaderData, useNavigate } from "react-router";
+import { JeopardyTitle, ScoreBox } from "../styles";
 import { useEffect } from "react";
 import { useQuiz } from "../contexts/gameContext";
-import styled from "styled-components";
-import SubjectsHeader from "../components/SubjectsHeader";
 import JeopardyForm from "../components/JeopardyForm";
 import QuestionScreen from "./Question";
+import { useRef } from "react";
+import { useAuth } from "../contexts/authContext";
 
-
-const ScoreBox = styled.div`
-  color: #ffd700;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-`;
-
-function Play() {
-  const data = useLoaderData();
+export default function Play() {
+  const flatQuestions = useLoaderData(); // now comes from quizLoader
   const navigate = useNavigate();
-
-  const { dataReceived, status, nextQuestion, answered, points, current } = useQuiz();
-
-  useEffect(() => {
-    if (data) {
-      dataReceived(data);
-    }
-  }, [data]);
+  const { dataReceived, status, answered, points, current, restart } = useQuiz();
+  const skipReset  = useRef(false);
+  const { token, user } = useAuth(); 
 
   useEffect(() => {
-    if (answered.length === data.length) {
-        navigate('/finished')
-    }
-  }, [answered, data, navigate])
+    if (flatQuestions.length) dataReceived(flatQuestions);
+  }, [flatQuestions, dataReceived]);
+
+  /* ---------- redirect when finished --------------- */
+  useEffect(() => {
+  if (answered.length === flatQuestions.length) {
+    skipReset.current = true;
+
+    (async () => {
+      try {
+        await fetch(`http://localhost:3001/scores/${user.username}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            quizTitle: flatQuestions[0]?.title || "Untitled Quiz",
+            score: points,
+            outOf: flatQuestions.reduce((total, q) => total + q.points, 0)
+          })
+        });
+      } catch (err) {
+        console.error("❌ Failed to save score:", err);
+      } finally {
+        // ✅ Navigate only after saving (or failing gracefully)
+        navigate("/finished");
+      }
+    })();
+  }
+}, [answered, flatQuestions, points, navigate, token, user]);
+
+  /* ---------- reset quiz on page exit -------------- */
+  useEffect(() => {
+    return () => {
+      if (!skipReset.current) {
+        restart(); // ✅ now only resets if you're truly leaving
+      }
+    };
+  }, [restart]);
+
+  /* ---------- render -------------------------------- */
+  const categoryMap = flatQuestions.reduce((acc, q) => {
+    (acc[q.topic] = acc[q.topic] || []).push(q);
+    return acc;
+  }, {});
+
 
   return (
     <div style={{ backgroundColor: "black", minHeight: "100vh" }}>
-      <JeopardyTitle>Open Book Jeopardy</JeopardyTitle>
+      <JeopardyTitle>Jeopardy</JeopardyTitle>
 
       <ScoreBox>Score: {points}</ScoreBox>
-
-      {status === "loading" && <p style={{ color: "white" }}>Data loading...</p>}
-      {status === "error" && <p style={{ color: "white" }}>Error!</p>}
-      {status === "ready" && (
-        <div>
-          <SubjectsHeader />
-          <JeopardyForm />
-        </div>
-      )}
-      {status ==="ready" && current!==null && <QuestionScreen />}
-
-
+      {/* ...score box */}
+      {status === "ready" && <JeopardyForm categoryMap={categoryMap} />}
+      {status === "ready" && current !== null && <QuestionScreen />}
     </div>
   );
 }
-
-export default Play;

@@ -23,6 +23,11 @@ const ScoreText = styled.p`
   color: white;
 `;
 
+const OutOfText = styled.p`
+  font-size: 1.2rem;
+  color: #ccc;
+`;
+
 const RestartButton = styled.button`
   background-color: #0033cc;
   color: white;
@@ -40,8 +45,11 @@ const RestartButton = styled.button`
 `;
 
 function Finished() {
-  const { points, restart } = useQuiz();
+  const { points, questions, restart } = useQuiz();
   const navigate = useNavigate();
+
+  // Calculate total possible points
+  const maxPoints = questions.reduce((sum, q) => sum + (q.points || 0), 0);
 
   function handleRestart() {
     restart();
@@ -52,6 +60,7 @@ function Finished() {
     <Wrapper>
       <Title>🎉 You Finished! 🎉</Title>
       <ScoreText>Your final score: {points}</ScoreText>
+      <OutOfText>Out of a possible {maxPoints} points</OutOfText>
       <RestartButton onClick={handleRestart}>Restart Game</RestartButton>
     </Wrapper>
   );

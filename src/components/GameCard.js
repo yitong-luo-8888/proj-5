@@ -1,40 +1,47 @@
-import { useQuiz } from "../contexts/gameContext";
-import { QuestionBox } from "../styles";
+import React from 'react'
+import { useQuiz } from '../contexts/gameContext'
+import { QuestionBox } from '../styles'
 
+function GameCard({ question, type = null, showPointsOnly = true }) {
+  const { nextQuestion, answered } = useQuiz()
 
-function GameCard({question, index=null, type=null}) {
+  const isAnswered = answered.includes(question.id)
 
-    const {nextQuestion} = useQuiz();
-
-    function onClick() {
-        nextQuestion(index)
+  const handleClick = () => {
+    if (!isAnswered) {
+      nextQuestion(question.id) // ✅ use unique ID
     }
+  }
 
-    const { answered } = useQuiz();
-    if (type === 'Answer') {
-        return <QuestionBox
+  // if showing the full question text
+  if (type === 'Answer') {
+    return (
+      <QuestionBox
         as="div"
         style={{
-          width: "60%",
-          height: "auto",
-          padding: "2rem",
-          fontSize: "1.5rem",
-          lineHeight: "1.8rem",
-          textAlign: "center"
+          width: '60%',
+          padding: '2rem',
+          fontSize: '1.5rem',
+          lineHeight: '1.8rem',
+          textAlign: 'center'
         }}
       >
-            {question.question}
-        </QuestionBox>
-    }
-    return (
-        <QuestionBox
-                    key={index}
-                    onClick={onClick}
-                    disabled={answered.includes(question.index)}
-                >
-                {question.question}
-        </QuestionBox>
+        {question.question}
+      </QuestionBox>
     )
+  }
+
+  const displayText = showPointsOnly ? `$${question.points}` : question.question
+
+  return (
+    <QuestionBox
+      onClick={handleClick}
+      disabled={isAnswered}
+      style={{ cursor: isAnswered ? 'default' : 'pointer' }}
+    >
+      {displayText}
+    </QuestionBox>
+  )
 }
 
 export default GameCard

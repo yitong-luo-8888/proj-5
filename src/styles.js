@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 
+export const ScoreBox = styled.div`
+  color: #ffd700;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+`;
+
 export const TotalBox = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);

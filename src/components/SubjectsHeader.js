@@ -1,13 +1,15 @@
-import { TopicHeader, TopicHeaderRow } from "../styles";
+// components/SubjectsHeader.jsx
+import React from 'react'
+import { TopicHeader, TopicHeaderRow } from '../styles'
 
-function SubjectsHeader() {
-    return(<TopicHeaderRow>
-            <TopicHeader>TV Show</TopicHeader>
-            <TopicHeader>Movie</TopicHeader>
-            <TopicHeader>Football</TopicHeader>
-            <TopicHeader>Soccer</TopicHeader>
-          </TopicHeaderRow>)
+function SubjectsHeader({ categories }) {
+  return (
+    <TopicHeaderRow>
+      {categories.map((cat) => (
+        <TopicHeader key={cat}>{cat}</TopicHeader>
+      ))}
+    </TopicHeaderRow>
+  )
 }
-
 
 export default SubjectsHeader

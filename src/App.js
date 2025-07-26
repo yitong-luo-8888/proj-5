@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./contexts/authContext";
 import Welcome     from "./pages/Welcome";
 import Login       from "./pages/Login";
 import Signup      from "./pages/Signup";
@@ -10,16 +9,16 @@ import ErrorPage   from "./pages/Error";
 import { quizListLoader, quizLoader } from "./data/loaders";
 import { authGuard } from "./authGuard";
 import GlobalStyle from './GlobalStyle'
-import CreateQuiz from "./pages/CreateQuiz";   // 👈 correct path/case
+import CreateQuiz from "./pages/CreateQuiz";   
 import { QuizProvider } from "./contexts/gameContext";
 import Scores from "./pages/Scores";
+import { AuthProvider } from "./contexts/newAuthContext";
 
 const router = createBrowserRouter([
   { path: "/",       element: <Welcome />, errorElement: <ErrorPage /> },
   { path: "/login",  element: <Login /> },
   { path: "/signup", element: <Signup /> },
 
-  // Everything below is protected:
   {
     path: "/choose",
     element: <ChooseQuiz />,

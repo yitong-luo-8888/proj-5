@@ -6,10 +6,10 @@ import { useQuiz } from "../contexts/gameContext";
 import JeopardyForm from "../components/JeopardyForm";
 import QuestionScreen from "./Question";
 import { useRef } from "react";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../contexts/newAuthContext";
 
 export default function Play() {
-  const flatQuestions = useLoaderData(); // now comes from quizLoader
+  const flatQuestions = useLoaderData();
   const navigate = useNavigate();
   const { dataReceived, status, answered, points, current, restart } = useQuiz();
   const skipReset  = useRef(false);
@@ -19,14 +19,13 @@ export default function Play() {
     if (flatQuestions.length) dataReceived(flatQuestions);
   }, [flatQuestions, dataReceived]);
 
-  /* ---------- redirect when finished --------------- */
   useEffect(() => {
   if (answered.length === flatQuestions.length) {
     skipReset.current = true;
 
     (async () => {
       try {
-        await fetch(`http://localhost:3001/scores/${user.username}`, {
+        await fetch(`http://localhost:3001/api/v1/userRoutes/scores/${user.username}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -41,23 +40,20 @@ export default function Play() {
       } catch (err) {
         console.error("❌ Failed to save score:", err);
       } finally {
-        // ✅ Navigate only after saving (or failing gracefully)
         navigate("/finished");
       }
     })();
   }
 }, [answered, flatQuestions, points, navigate, token, user]);
 
-  /* ---------- reset quiz on page exit -------------- */
   useEffect(() => {
     return () => {
       if (!skipReset.current) {
-        restart(); // ✅ now only resets if you're truly leaving
+        restart();
       }
     };
   }, [restart]);
 
-  /* ---------- render -------------------------------- */
   const categoryMap = flatQuestions.reduce((acc, q) => {
     (acc[q.topic] = acc[q.topic] || []).push(q);
     return acc;
@@ -69,7 +65,6 @@ export default function Play() {
       <JeopardyTitle>Jeopardy</JeopardyTitle>
 
       <ScoreBox>Score: {points}</ScoreBox>
-      {/* ...score box */}
       {status === "ready" && <JeopardyForm categoryMap={categoryMap} />}
       {status === "ready" && current !== null && <QuestionScreen />}
     </div>

@@ -18,7 +18,6 @@ const OverlayWrapper = styled.div`
   gap: 1.5rem;
 `;
 
-// Custom option button with transient $correct prop
 const OptionButton = styled.button`
   background-color: ${({ $selected, $correct }) => {
     if (!$selected) return "#0033cc";
@@ -48,7 +47,7 @@ export default function QuestionScreen() {
   if (!question) return null;
 
   function onClick(answerText, isCorrect) {
-    if (clicked) return; // only one click
+    if (clicked) return; 
     setClicked(answerText);
     setTimeout(() => {
   newAnswer(answerText);
@@ -58,7 +57,6 @@ export default function QuestionScreen() {
 
   return (
     <OverlayWrapper>
-      {/* Show the full question */}
       <QuestionBox
         as="div"
         style={{
@@ -72,7 +70,6 @@ export default function QuestionScreen() {
         {question.question}
       </QuestionBox>
 
-      {/* Render each answer choice */}
       {question.answers.map(({ text, correct }) => (
         <OptionButton
   key={text}
@@ -81,7 +78,7 @@ export default function QuestionScreen() {
   $correct={clicked === text && correct}
   onClick={() => onClick(text, correct)}
 >
-  {text} {/* ✅ this renders the answer text */}
+  {text}
 </OptionButton>
       ))}
     </OverlayWrapper>

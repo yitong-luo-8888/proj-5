@@ -1,13 +1,11 @@
 // models/Quiz.js
 import mongoose from 'mongoose';
 
-// Answer subdocument: text + correctness flag
 const AnswerSchema = new mongoose.Schema({
   text: { type: String, required: true },
   correct: { type: Boolean, required: true }
 });
 
-// Question subdocument: points value, question text, and exactly 4 answers
 const QuestionSchema = new mongoose.Schema({
   points: { type: Number, required: true },
   question: { type: String, required: true },
@@ -20,7 +18,6 @@ const QuestionSchema = new mongoose.Schema({
   }
 });
 
-// Category subdocument: name and exactly 5 questions
 const CategorySchema = new mongoose.Schema({
   name: { type: String, required: true },
   questions: {
@@ -32,7 +29,6 @@ const CategorySchema = new mongoose.Schema({
   }
 });
 
-// Quiz document: title + exactly 6 categories
 const QuizSchema = new mongoose.Schema({
   title: { type: String, required: true },
   categories: {

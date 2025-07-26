@@ -1,13 +1,6 @@
-// components/JeopardyForm.jsx
-import React from 'react'
 import { TotalBox, TopicHeader } from '../styles'
 import GameCard from './GameCard'
 
-/**
- * Renders a Jeopardy board: columns = categories, rows = question levels.
- * @param {{ categoryMap: Record<string, any[]> }} props
- */
-// components/JeopardyForm.jsx
 function JeopardyForm({ categoryMap }) {
   const categories = Object.keys(categoryMap);
   const sortedMap = categories.reduce((acc, cat) => {
@@ -35,9 +28,9 @@ function JeopardyForm({ categoryMap }) {
           const q = sortedMap[cat][rowIdx];
           return (
             <GameCard
-              key={`${cat}-${q.id}`}         // use the unique index too
+              key={`${cat}-${q.id}`}       
               question={q}
-              index={q.index}      // pass the exact same index here
+              index={q.index}     
             />
           );
         })

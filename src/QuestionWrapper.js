@@ -1,4 +1,3 @@
-// QuestionWrapper.jsx
 import { useQuiz } from "./contexts/gameContext";
 import QuestionScreen from "./pages/Question";
 

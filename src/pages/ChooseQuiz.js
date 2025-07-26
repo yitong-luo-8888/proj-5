@@ -50,7 +50,7 @@ const QuizCard = styled(NavLink)`
 `;
 
 export default function ChooseQuiz() {
-  const quizList = useLoaderData();  // [{ title }, ...]
+  const quizList = useLoaderData();
   return (
     <PageWrapper>
       <Heading>Choose a Quiz</Heading>

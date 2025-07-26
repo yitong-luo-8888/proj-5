@@ -9,11 +9,10 @@ function GameCard({ question, type = null, showPointsOnly = true }) {
 
   const handleClick = () => {
     if (!isAnswered) {
-      nextQuestion(question.id) // ✅ use unique ID
+      nextQuestion(question.id) 
     }
   }
 
-  // if showing the full question text
   if (type === 'Answer') {
     return (
       <QuestionBox

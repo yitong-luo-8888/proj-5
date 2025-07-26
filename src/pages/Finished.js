@@ -48,7 +48,6 @@ function Finished() {
   const { points, questions, restart } = useQuiz();
   const navigate = useNavigate();
 
-  // Calculate total possible points
   const maxPoints = questions.reduce((sum, q) => sum + (q.points || 0), 0);
 
   function handleRestart() {

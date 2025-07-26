@@ -31,7 +31,6 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-// Helper used during login
 UserSchema.methods.comparePassword = function (candidate) {
   return bcrypt.compare(candidate, this.password);
 };

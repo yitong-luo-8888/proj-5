@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   };
 
   const call = async (route, body) => {
-    const r = await fetch(`${API}/auth/${route}`, {
+    const r = await fetch(`${API}/api/v1/userRoutes/${route}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body)

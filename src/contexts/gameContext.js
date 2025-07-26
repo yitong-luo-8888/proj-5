@@ -1,4 +1,3 @@
-// gameContext.js
 import React, { createContext, useContext, useReducer, useCallback, useMemo } from "react";
 
 const QuizContext = createContext();
@@ -49,7 +48,7 @@ function reducer(state, action) {
     case "restart":
       return {
         ...initialState,
-        status: "ready" // or "active" depending on your flow
+        status: "ready"
       };
 
     default:
@@ -63,7 +62,6 @@ function QuizProvider({ children }) {
 
   const closeQuestion = useCallback(() => dispatch({ type: "closeQuestion" }), []);
 
-  // Wrap dispatchers in callbacks
   const dataReceived = useCallback(
   (data) => dispatch({ type: "dataReceived", payload: data }),
   []
@@ -86,7 +84,6 @@ const newAnswer = useCallback(
   const finish = useCallback(() => dispatch({ type: "finish" }), []);
   const restart = useCallback(() => dispatch({ type: "restart" }), []);
 
-  // Memoize context value so it only changes when one of its members changes
   const value = useMemo(
     () => ({
       questions,

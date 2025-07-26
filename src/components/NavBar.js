@@ -1,11 +1,9 @@
-// src/components/NavBar.jsx
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-/* ---------- Jeopardy‑styled link ---------- */
 const CornerLink = styled(Link)`
-  background: #0025af;           /* rich board blue */
-  color: #ffd700;                /* “Daily Double” gold */
+  background: #0025af;         
+  color: #ffd700;              
   padding: 0.55rem 1.4rem;
   font-size: 1.05rem;
   font-weight: 700;

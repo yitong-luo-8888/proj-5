@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../contexts/newAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Page = styled.div`
@@ -39,10 +39,22 @@ export default function Scores() {
   const [err, setErr] = useState("");
   const nav = useNavigate();
 
+  const getUsername = () => {
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user?.username;
+    } catch {
+        console.log("Now username in local storage")
+        return null;
+    }
+  };
+  const username = getUsername();
+
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const res = await fetch("http://localhost:3001/scores", {
+        console.log(username)
+        const res = await fetch(`http://localhost:3001/api/v1/userRoutes/scores/${username}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

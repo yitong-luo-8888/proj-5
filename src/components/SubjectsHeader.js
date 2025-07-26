@@ -1,5 +1,3 @@
-// components/SubjectsHeader.jsx
-import React from 'react'
 import { TopicHeader, TopicHeaderRow } from '../styles'
 
 function SubjectsHeader({ categories }) {

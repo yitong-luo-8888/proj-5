@@ -1,17 +1,17 @@
 // src/pages/Welcome.jsx
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useAuth } from "../contexts/authContext";
-import LoginSignUpFeature from "../components/NavBar";
+import LoginSignUpFeature from "./../components/NavBar";
+import { useAuth } from "../contexts/newAuthContext";
 
-/* ---------- top‑left corner container ---------- */
+
 const Corner = styled.div`
   position: fixed;
   top: 1rem;
-  right: 1rem;                /* top‑right corner */
-  z-index: 1000;              /* keep it above everything */
+  right: 1rem;            
+  z-index: 1000;            
 `;
-/* ---------- existing styled components ---------- */
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,18 +48,16 @@ const Btn = styled(Link)`
   background: #333
 `;
 
-/* ---------- component ---------- */
+
 export default function Welcome() {
   const { token } = useAuth();
 
   return (
     <>
-      {/* ⬇️ corner login / signup button */}
       <Corner>
         <LoginSignUpFeature />
       </Corner>
 
-      {/* ⬇️ existing centered content */}
       <Wrapper>
         <Title>Jeopardy Master</Title>
 
